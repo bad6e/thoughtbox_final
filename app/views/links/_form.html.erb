@@ -1,0 +1,9 @@
+<%= bootstrap_form_for Link.new, url: links_path do |f| %>
+  <%= f.text_field :title %>
+  <%= f.text_field :link, help: "Must be a valid link" %>
+  <div class="row">
+    <div class="col-xs-3">
+      <%= f.submit "Create a new link", class: "btn btn-success" %>
+    </div>
+  </div>
+<% end  %>
