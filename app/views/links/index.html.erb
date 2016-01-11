@@ -48,6 +48,7 @@
     <div class='all-links'>
       <strong>Title: <%= link.title %></strong><br>
       <div class='stuff'>
+        <div class='<%= link.id %>' style="display: none;"></div>
         <strong>Link: <%= link.link %></strong>
          <input class="btn btn-default read" id="read" type="button" name="submit" value="Mark as Read"><input class="btn btn-default unread" type="button" name="submit" value="Mark as Unread"><%= link_to "Edit", edit_link_path(link) %><br><br>
        </div>
