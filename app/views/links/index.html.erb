@@ -46,7 +46,9 @@
   <div class="row well">
     <% @links.each do |link| %>
     <div class='all-links'>
+
       <strong>Title: <%= link.title %></strong><br>
+      <div class='<%= link.read_status%>' style="display: none;"></div>
       <div class='stuff'>
         <div class='<%= link.id %>' style="display: none;"></div>
         <strong>Link: <%= link.link %></strong>
