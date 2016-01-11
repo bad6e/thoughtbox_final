@@ -1,4 +1,4 @@
-<%= bootstrap_form_for Link.new, url: new_link_path do |f| %>
+<%= bootstrap_form_for Link.new, url: links_path do |f| %>
   <%= f.text_field :title %>
   <%= f.text_field :link, help: "Must be a valid link" %>
   <div class="row">
