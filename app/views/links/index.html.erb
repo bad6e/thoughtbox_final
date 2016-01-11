@@ -31,7 +31,9 @@
         <h2 align='center'>Your Links</h2>
         <% @links.each do |link| %>
         <li><strong>Title: </strong> <%= link.title %></li>
-          <li><strong>Link:</strong> <%= link.link %></li><br>
+          <li><strong>Link:</strong> <%= link.link %>
+          <%=link_to "Mark as Read" %> |  <%=link_to "Mark as Unread" %></li>
+          <br>
         <% end %>
     </div>
   </div>
