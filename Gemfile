@@ -13,6 +13,7 @@ gem 'bootswatch-rails'
 gem 'bootstrap_form'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'validates_email_format_of'
+gem "validate_url"
 
 gem 'bcrypt', '~> 3.1.7'
 

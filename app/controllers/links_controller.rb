@@ -15,7 +15,7 @@ class LinksController < ApplicationController
     if @links.save
       redirect_to links_path, notice: "Link successfully saved!"
     else
-      render :new
+      # render :index
     end
   end
 
