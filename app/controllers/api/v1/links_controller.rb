@@ -2,7 +2,6 @@ class Api::V1::LinksController < ApplicationController
   respond_to :json
 
   def update
-    # binding.pry
     link = Link.find(params[:id])
     if link.update(link_params)
       respond_with do |format|
