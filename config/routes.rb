@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  root "sessions#new"
+  root "welcome#index"
 end
