@@ -1,1 +1,17 @@
-<H1>Hi Mom</H1>
+<div class="container" id="user-name">
+  <div class="col-md-offset-3 col-md-6">
+    <div class="row well">
+      <h1> Welcome <%= current_user.email %></h1>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container" id="join-form">
+  <div class="col-md-offset-3 col-md-6">
+    <div class="row well">
+      <%= link_to "Logout", logout_path, method: :delete %>
+    </div>
+  </div>
+</div>
