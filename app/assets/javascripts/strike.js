@@ -7,28 +7,28 @@ function strikeThrough(){
   $('.read').on('click', function(){
     $(this).parent().css("text-decoration", "line-through");
     var id = $(this).parent().children().first().attr('class')
-    editLinkStatus(id);
+    editLinkStatus(id, true);
   });
 }
 
 function removeStrikeThrough(){
   $('.unread').on('click', function(){
     $(this).parent().css("text-decoration", "none");
+    var id = $(this).parent().children().first().attr('class');
+    editLinkStatus(id, false);
   });
 }
 
-
-function editLinkStatus(id) {
-  debugger
+function editLinkStatus(id, status) {
   var linkParams = {
     link: {
-      read_status: 'true'
+      read_status: status
     }
   }
-  postEditLink(linkParams, link, id)
+  postEditLink(linkParams, id)
 }
 
-function postEditIdea(linkParams, idea, id){
+function postEditLink(linkParams, id){
   $.ajax({
     type: 'PUT',
     data: linkParams,
@@ -41,7 +41,3 @@ function postEditIdea(linkParams, idea, id){
   })
 }
 
-//         postEditIdea(ideaParams, idea, ideaID)
-//       })
-//   })
-// }

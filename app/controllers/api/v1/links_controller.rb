@@ -2,10 +2,11 @@ class Api::V1::LinksController < ApplicationController
   respond_to :json
 
   def update
+    # binding.pry
     link = Link.find(params[:id])
     if link.update(link_params)
       respond_with do |format|
-        format.json { render(json: link.find(params[:id]), status: 201) }
+        format.json { render(json: Link.find(params[:id]), status: 201) }
       end
     else
       render json: link.errors, status: 422
@@ -13,8 +14,6 @@ class Api::V1::LinksController < ApplicationController
   end
 
   def link_params
-    params.require(:idea).permit(:title, :link, :read_status)
+    params.require(:link).permit(:read_status)
   end
-
-
 end
