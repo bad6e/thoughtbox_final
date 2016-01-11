@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="col-md-offset-3 col-md-6">
+      <div class="row well">
+        <h2 align='center'>Edit a Link</h2>
+        <%= bootstrap_form_for @link do |f| %>
+        <%= f.text_field :title %>
+        <%= f.text_field :link, help: "Must be a valid link" %>
+        <div class="row">
+          <div class="col-xs-3">
+            <%= f.submit "Submit", class: "btn btn-success" %>
+          </div>
+        </div>
+      <% end  %>
+    </div>
+  </div>
+</div>
