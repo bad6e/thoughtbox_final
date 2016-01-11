@@ -1,0 +1,10 @@
+<%= bootstrap_form_for @link, url: join_path do |f| %>
+  <%= f.text_field :email %>
+  <%= f.password_field :password, help: "Must be 8 Characters", icon: "lock" %>
+  <%= f.password_field :password_confirmation, label: "Confirm Password" %>
+  <div class="row">
+    <div class="col-xs-3">
+      <%= f.submit "Create a new link", class: "btn btn-success" %>
+    </div>
+  </div>
+<% end  %>
