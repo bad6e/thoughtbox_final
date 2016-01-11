@@ -16,7 +16,7 @@ RSpec.describe Api::V1::LinksController, type: :controller do
       expect(link_status).to eq(true)
     end
 
-      it "updates the same link to false" do
+    it "updates the same link to false" do
       put :update, format: :json, id: @link_one.id, link: { read_status: false }
       assert_response :success
 

@@ -34,7 +34,6 @@ function postEditLink(linkParams, id){
     data: linkParams,
     url: '/api/v1/links/' + id,
     success: function(response){
-      console.log("SHIP")
     },
     error: function(){
     }
