@@ -1,7 +1,7 @@
 class LinksController < ApplicationController
 
   def index
-    if current_user.links !=
+    if current_user.links != nil
       @links = current_user.links
     end
   end
@@ -11,11 +11,13 @@ class LinksController < ApplicationController
   end
 
   def create
-    @links = current_user.links.new(link_params)
-    if @links.save
-      redirect_to links_path, notice: "Link successfully saved!"
+    @link = current_user.links.new(link_params)
+    if @link.save
+      redirect_to links_path
+      flash[:success] = "Link successfully saved!"
     else
-      # render :index
+      redirect_to links_path
+      flash[:errors] = "Must be a valid link"
     end
   end
 
