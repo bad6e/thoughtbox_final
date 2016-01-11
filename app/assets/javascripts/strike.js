@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  getLinks();
   strikeThrough();
   removeStrikeThrough();
 });
@@ -25,7 +26,8 @@ function editLinkStatus(id, status) {
       read_status: status
     }
   }
-  postEditLink(linkParams, id)
+  postEditLink(linkParams, id);
+  getLinks();
 }
 
 function postEditLink(linkParams, id){
@@ -39,4 +41,20 @@ function postEditLink(linkParams, id){
     }
   })
 }
+
+function getLinks(){
+  $.getJSON('/api/v1/links', function(response){
+    parseLinks(response)
+  });
+};
+
+function parseLinks(response) {
+  $.each(response, function(i, link) {
+    renderIdea(link)
+  });
+};
+
+function renderIdea(link) {
+  var status = $('.read-status').attr( 'id', link );
+};
 
