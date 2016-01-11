@@ -49,7 +49,7 @@
       <strong>Title: <%= link.title %></strong><br>
       <div class='stuff'>
         <strong>Link: <%= link.link %></strong>
-         <input class="btn btn-default read" id="read" type="button" name="submit" value="Mark as Read"><input class="btn btn-default unread" type="button" name="submit" value="Mark as Unread"><br><br>
+         <input class="btn btn-default read" id="read" type="button" name="submit" value="Mark as Read"><input class="btn btn-default unread" type="button" name="submit" value="Mark as Unread"><%= link_to "Edit", edit_link_path(link) %><br><br>
        </div>
       </div>
      <br>
