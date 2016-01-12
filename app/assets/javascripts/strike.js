@@ -4,8 +4,9 @@ $(document).ready(function(){
 
 function strikeThrough(){
   $('.read').on('click', function(){
-
+debugger
     $(this).parent().css("text-decoration", "line-through");
+
     var id = $(this).parent().children().first().attr('class');
     editLinkStatus(id, true);
   });
@@ -63,7 +64,7 @@ function renderLinks(link) {
     + link.id
     + "' style='display: none;'></div><strong>Link: "
     + link.link
-    + "</strong> <input class='btn btn-default read' type='button' name='submit' value='Mark as Read'> <input class='btn btn-default unread' type='button' name='submit' value='Mark as Unread'><a href='/links/"
+    + "</strong> <input class='btn btn-default read' type='button' name='submit' value='Mark as Read'> <input class='btn btn-default unread' type='button' name='submit' value='Mark as Unread'></div><a href='/links/"
     + link.id
     + "/edit'>Edit</a><br><br>"
     );
