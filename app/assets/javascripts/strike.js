@@ -26,9 +26,9 @@ function editLinkStatus(id, status) {
     link: {
       read_status: status
     }
-  }
+  };
   postEditLink(linkParams, id);
-}
+};
 
 function postEditLink(linkParams, id){
   $.ajax({
@@ -40,9 +40,9 @@ function postEditLink(linkParams, id){
     },
     error: function(){
       console.log("error")
-    }
-  })
-}
+    };
+  });
+};
 
 function getLinks(){
   $.getJSON('/api/v1/links', function(response){
@@ -58,57 +58,46 @@ function parseLinks(response) {
 
 function showReadLinks(){
   $('.showread').on('click', function(){
-    toggleOnTrue('block')
-    toggleOffFalse('none')
-  })
-}
+    toggleOnTrue('block');
+    toggleOffFalse('none');
+  });
+};
 
 function showUnreadLinks(){
   $('.showunread').on('click', function(){
-    toggleOnFalse('block')
-    toggleOffTrue('none')
-  })
+    toggleOnFalse('block');
+    toggleOffTrue('none');
+  });
 };
 
 
 function toggleOffFalse(displayState){
-    var trueClass = document.getElementsByClassName('false')
-    for (var i = 0; i < trueClass.length; i++){
-      trueClass[i].style.display = displayState;
+  var trueClass = document.getElementsByClassName('false');
+  for (var i = 0; i < trueClass.length; i++){
+    trueClass[i].style.display = displayState;
     }
 }
 
 function toggleOffTrue(displayState){
-    var trueClass = document.getElementsByClassName('true')
-    for (var i = 0; i < trueClass.length; i++){
-      trueClass[i].style.display = displayState;
-    }
+  var trueClass = document.getElementsByClassName('true');
+  for (var i = 0; i < trueClass.length; i++){
+    trueClass[i].style.display = displayState;
+  }
 }
 
 function toggleOnTrue(displayState){
-    var trueClass = document.getElementsByClassName('true')
-    for (var i = 0; i < trueClass.length; i++){
-      trueClass[i].style.display = displayState;
-    }
+  var trueClass = document.getElementsByClassName('true');
+  for (var i = 0; i < trueClass.length; i++){
+    trueClass[i].style.display = displayState;
+  }
 }
 
 function toggleOnFalse(displayState){
-    var trueClass = document.getElementsByClassName('false')
-    for (var i = 0; i < trueClass.length; i++){
-      trueClass[i].style.display = displayState;
-    }
-}
-
-
-
-
-
-
-
-
-// toggle('block'); // Shows
-// toggle('none'); // hides
-
+  var trueClass = document.getElementsByClassName('false');
+  for (var i = 0; i < trueClass.length; i++){
+    trueClass[i].style.display = displayState;
+  };
+};
 
 function renderLinks(link) {
   $('#link-list').prepend("<div class='all-links false'><strong>Title: "
