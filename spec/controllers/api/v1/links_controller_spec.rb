@@ -2,22 +2,12 @@ require 'rails_helper'
 
 RSpec.describe Api::V1::LinksController, type: :controller do
   before(:each) do
+    @user       = User.create(email: 'bret@istired.com', password: 'password')
     @link_one   = Link.create(title: "CNN",
-                              link: "http://www.cnn.com/")
+                              link: "http://www.cnn.com/",
+                              user_id: @user.id)
   end
 
-  describe "GET /api/v1/links/" do
-
-    it "gets a link on the link list" do
-      get :index ,format: :json
-      expect(response_data.first['title']).to eq(@link_one.title)
-    end
-
-    it "gets all the links on the link list" do
-      get :index ,format: :json
-      expect(response_data.count).to eq(1)
-    end
-  end
 
   describe "PUT /api/v1/links/:id" do
 

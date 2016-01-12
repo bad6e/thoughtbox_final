@@ -2,7 +2,9 @@ class Api::V1::LinksController < ApplicationController
   respond_to :json
 
   def index
-    respond_with Link.all, location: nil
+    if current_user != nil
+      respond_with current_user.links, location: nil
+    end
   end
 
   def update
