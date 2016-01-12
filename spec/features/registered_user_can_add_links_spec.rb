@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "registered user can add links" do
+feature "registered user can add links", js: true do
 
   scenario "user can add links" do
     user ||= User.create(email: "bret@isabeast.com",

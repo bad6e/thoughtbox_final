@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "guest creates an account" do
+feature "guest creates an account", js: true do
   scenario "guest visits the login page" do
     visit root_path
     click_on "Not registered? Sign up here."
