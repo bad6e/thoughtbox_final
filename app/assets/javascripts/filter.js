@@ -1,4 +1,4 @@
-$(document).ready(function(){
+function filter(){
   $("#filter").keyup(function(){
     var filter = $(this).val(), count = 0;
 
@@ -14,4 +14,5 @@ $(document).ready(function(){
     var numberItems = count;
     $(".filter-count").text("Number of Comments = "+count);
   });
-});
+}
+
