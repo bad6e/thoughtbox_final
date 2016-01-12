@@ -1,12 +1,10 @@
 $(document).ready(function(){
   getLinks();
-  strikeThrough();
-  removeStrikeThrough();
-  showRead();
 });
 
 function strikeThrough(){
   $('.read').on('click', function(){
+
     $(this).parent().css("text-decoration", "line-through");
     var id = $(this).parent().children().first().attr('class');
     editLinkStatus(id, true);
@@ -28,7 +26,6 @@ function editLinkStatus(id, status) {
     }
   }
   postEditLink(linkParams, id);
-  getLinks();
 }
 
 function postEditLink(linkParams, id){
@@ -53,9 +50,29 @@ function getLinks(){
 
 function parseLinks(response) {
   $.each(response, function(i, link) {
-    // renderStatus(link)
+    renderLinks(link)
   });
 };
+
+function renderLinks(link) {
+  $('#link-list').prepend("<div class='all-links'><strong>Title: "
+    + link.title
+    + "</strong><br><div class='read-status'id='"
+    + link.read_status
+    + "'style='display: none;'></div><div class='stuff'><div class='"
+    + link.id
+    + "' style='display: none;'></div><strong>Link: "
+    + link.link
+    + "</strong> <input class='btn btn-default read' type='button' name='submit' value='Mark as Read'> <input class='btn btn-default unread' type='button' name='submit' value='Mark as Unread'><a href='/links/"
+    + link.id
+    + "/edit'>Edit</a><br><br>"
+    );
+  strikeThrough();
+  removeStrikeThrough();
+};
+
+
+
 
 
 
