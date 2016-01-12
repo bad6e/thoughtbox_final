@@ -2,12 +2,13 @@ $(document).ready(function(){
   getLinks();
   strikeThrough();
   removeStrikeThrough();
+  showRead();
 });
 
 function strikeThrough(){
   $('.read').on('click', function(){
     $(this).parent().css("text-decoration", "line-through");
-    var id = $(this).parent().children().first().attr('class')
+    var id = $(this).parent().children().first().attr('class');
     editLinkStatus(id, true);
   });
 }
@@ -36,8 +37,10 @@ function postEditLink(linkParams, id){
     data: linkParams,
     url: '/api/v1/links/' + id,
     success: function(response){
+      console.log(response)
     },
     error: function(){
+      console.log("error")
     }
   })
 }
@@ -50,11 +53,10 @@ function getLinks(){
 
 function parseLinks(response) {
   $.each(response, function(i, link) {
-    renderIdea(link)
+    // renderStatus(link)
   });
 };
 
-function renderIdea(link) {
-  var status = $('.read-status').attr( 'id', link );
-};
+
+
 

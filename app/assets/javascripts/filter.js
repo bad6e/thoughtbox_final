@@ -12,6 +12,6 @@ $(document).ready(function(){
     });
 
     var numberItems = count;
-    $("#filter-count").text("Number of Comments = "+count);
+    $(".filter-count").text("Number of Comments = "+count);
   });
 });
