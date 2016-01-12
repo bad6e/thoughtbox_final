@@ -28,7 +28,7 @@ function editLinkStatus(id, status) {
     }
   };
   postEditLink(linkParams, id);
-};
+}
 
 function postEditLink(linkParams, id){
   $.ajax({
@@ -40,64 +40,42 @@ function postEditLink(linkParams, id){
     },
     error: function(){
       console.log("error")
-    };
+    }
   });
-};
+}
 
 function getLinks(){
   $.getJSON('/api/v1/links', function(response){
     parseLinks(response)
   });
-};
+}
 
 function parseLinks(response) {
   $.each(response, function(i, link) {
     renderLinks(link)
   });
-};
+}
 
 function showReadLinks(){
   $('.showread').on('click', function(){
-    toggleOnTrue('block');
-    toggleOffFalse('none');
+    toggle('block', 'true');
+    toggle('none', 'false');
   });
-};
+}
 
 function showUnreadLinks(){
   $('.showunread').on('click', function(){
-    toggleOnFalse('block');
-    toggleOffTrue('none');
+    toggle('block', 'false');
+    toggle('none', 'true');
   });
-};
-
-
-function toggleOffFalse(displayState){
-  var trueClass = document.getElementsByClassName('false');
-  for (var i = 0; i < trueClass.length; i++){
-    trueClass[i].style.display = displayState;
-    }
 }
 
-function toggleOffTrue(displayState){
-  var trueClass = document.getElementsByClassName('true');
-  for (var i = 0; i < trueClass.length; i++){
-    trueClass[i].style.display = displayState;
+function toggle(displayState, boolean){
+  var trueClass = document.getElementsByClassName(boolean);
+    for (var i = 0; i < trueClass.length; i++){
+      trueClass[i].style.display = displayState;
   }
 }
-
-function toggleOnTrue(displayState){
-  var trueClass = document.getElementsByClassName('true');
-  for (var i = 0; i < trueClass.length; i++){
-    trueClass[i].style.display = displayState;
-  }
-}
-
-function toggleOnFalse(displayState){
-  var trueClass = document.getElementsByClassName('false');
-  for (var i = 0; i < trueClass.length; i++){
-    trueClass[i].style.display = displayState;
-  };
-};
 
 function renderLinks(link) {
   $('#link-list').prepend("<div class='all-links false'><strong>Title: "
