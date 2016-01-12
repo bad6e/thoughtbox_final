@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require strike
+//= require filter
 //= require_tree .

@@ -1,12 +1,12 @@
 $(document).ready(function(){
   getLinks();
+  filter();
 });
 
 function strikeThrough(){
   $('.read').on('click', function(){
-debugger
     $(this).parent().css("text-decoration", "line-through");
-
+    $(this).parent().parent().removeClass('false').addClass('true');
     var id = $(this).parent().children().first().attr('class');
     editLinkStatus(id, true);
   });
@@ -15,6 +15,7 @@ debugger
 function removeStrikeThrough(){
   $('.unread').on('click', function(){
     $(this).parent().css("text-decoration", "none");
+    $(this).parent().parent().removeClass('true').addClass('false');
     var id = $(this).parent().children().first().attr('class');
     editLinkStatus(id, false);
   });
@@ -55,12 +56,64 @@ function parseLinks(response) {
   });
 };
 
+function showReadLinks(){
+  $('.showread').on('click', function(){
+    toggleOnTrue('block')
+    toggleOffFalse('none')
+  })
+}
+
+function showUnreadLinks(){
+  $('.showunread').on('click', function(){
+    toggleOnFalse('block')
+    toggleOffTrue('none')
+  })
+};
+
+
+function toggleOffFalse(displayState){
+    var trueClass = document.getElementsByClassName('false')
+    for (var i = 0; i < trueClass.length; i++){
+      trueClass[i].style.display = displayState;
+    }
+}
+
+function toggleOffTrue(displayState){
+    var trueClass = document.getElementsByClassName('true')
+    for (var i = 0; i < trueClass.length; i++){
+      trueClass[i].style.display = displayState;
+    }
+}
+
+function toggleOnTrue(displayState){
+    var trueClass = document.getElementsByClassName('true')
+    for (var i = 0; i < trueClass.length; i++){
+      trueClass[i].style.display = displayState;
+    }
+}
+
+function toggleOnFalse(displayState){
+    var trueClass = document.getElementsByClassName('false')
+    for (var i = 0; i < trueClass.length; i++){
+      trueClass[i].style.display = displayState;
+    }
+}
+
+
+
+
+
+
+
+
+// toggle('block'); // Shows
+// toggle('none'); // hides
+
+
 function renderLinks(link) {
-  $('#link-list').prepend("<div class='all-links'><strong>Title: "
+  $('#link-list').prepend("<div class='all-links false'><strong>Title: "
     + link.title
-    + "</strong><br><div class='read-status'id='"
-    + link.read_status
-    + "'style='display: none;'></div><div class='stuff'><div class='"
+    + "</strong><br><div class='read-status'style='display: none;'></div><div class='button'><div class='"
     + link.id
     + "' style='display: none;'></div><strong>Link: "
     + link.link
@@ -70,11 +123,7 @@ function renderLinks(link) {
     );
   strikeThrough();
   removeStrikeThrough();
+  showUnreadLinks();
+  showReadLinks();
 };
-
-
-
-
-
-
 
