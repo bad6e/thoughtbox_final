@@ -6,6 +6,7 @@ $(document).ready(function(){
 
 function strikeThrough() {
   $('.read').on('click', function(){
+    console.log("y")
     $(this).parent().css("text-decoration", "line-through");
     $(this).parent().parent().removeClass('false').addClass('true');
     var id = $(this).parent().children().first().attr('class');
@@ -37,23 +38,23 @@ function postEditLink(linkParams, id) {
     data: linkParams,
     url: '/api/v1/links/' + id,
     success: function(response){
-      console.log(response)
+      console.log(response);
     },
     error: function(){
-      console.log("error")
+      console.log("error");
     }
   });
 }
 
 function getLinks(){
   $.getJSON('/api/v1/links', function(response){
-    parseLinks(response)
+    parseLinks(response);
   });
 }
 
 function parseLinks(response) {
   $.each(response, function(i, link) {
-    renderLinks(link)
+    renderLinks(link);
   });
 }
 
@@ -84,6 +85,8 @@ function sorter() {
       return $(a).find("h3").text() > $(b).find("h3").text();
     });
   $("#link-list").html(alphabeticallyOrderedDivs);
+  strikeThrough();
+  removeStrikeThrough();
   });
 }
 
