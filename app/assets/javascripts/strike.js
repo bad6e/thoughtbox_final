@@ -1,9 +1,10 @@
 $(document).ready(function(){
   getLinks();
+  sorter();
   filter();
 });
 
-function strikeThrough(){
+function strikeThrough() {
   $('.read').on('click', function(){
     $(this).parent().css("text-decoration", "line-through");
     $(this).parent().parent().removeClass('false').addClass('true');
@@ -12,7 +13,7 @@ function strikeThrough(){
   });
 }
 
-function removeStrikeThrough(){
+function removeStrikeThrough() {
   $('.unread').on('click', function(){
     $(this).parent().css("text-decoration", "none");
     $(this).parent().parent().removeClass('true').addClass('false');
@@ -30,7 +31,7 @@ function editLinkStatus(id, status) {
   postEditLink(linkParams, id);
 }
 
-function postEditLink(linkParams, id){
+function postEditLink(linkParams, id) {
   $.ajax({
     type: 'PUT',
     data: linkParams,
@@ -56,35 +57,44 @@ function parseLinks(response) {
   });
 }
 
-function showReadLinks(){
+function showReadLinks() {
   $('.showread').on('click', function(){
     toggle('block', 'true');
     toggle('none', 'false');
   });
 }
 
-function showUnreadLinks(){
+function showUnreadLinks() {
   $('.showunread').on('click', function(){
     toggle('block', 'false');
     toggle('none', 'true');
   });
 }
 
-function toggle(displayState, boolean){
+function toggle(displayState, boolean) {
   var trueClass = document.getElementsByClassName(boolean);
     for (var i = 0; i < trueClass.length; i++){
       trueClass[i].style.display = displayState;
   }
 }
 
+function sorter() {
+  $('.alpha').on('click', function(){
+    var alphabeticallyOrderedDivs = $("div.all-links").sort(function(a,b){
+      return $(a).find("h3").text() > $(b).find("h3").text();
+    });
+  $("#link-list").html(alphabeticallyOrderedDivs);
+  });
+}
+
 function renderLinks(link) {
-  $('#link-list').prepend("<div class='all-links false'><strong>Title: "
+  $('#link-list').prepend("<div class='all-links false'><strong><h3>Title: "
     + link.title
-    + "</strong><br><div class='read-status'style='display: none;'></div><div class='button'><div class='"
+    + "</h3></strong><br><div class='read-status'style='display: none;'></div><div class='button'><div class='"
     + link.id
-    + "' style='display: none;'></div><strong>Link: "
+    + "' style='display: none;'></div><strong><h4>Link: "
     + link.link
-    + "</strong> <input class='btn btn-default read' type='button' name='submit' value='Mark as Read'> <input class='btn btn-default unread' type='button' name='submit' value='Mark as Unread'></div><a href='/links/"
+    + "</h4></strong> <input class='btn btn-default read' type='button' name='submit' value='Mark as Read'> <input class='btn btn-default unread' type='button' name='submit' value='Mark as Unread'></div><a href='/links/"
     + link.id
     + "/edit'>Edit</a><br><br>"
     );
