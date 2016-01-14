@@ -8,9 +8,7 @@ RSpec.describe Api::V1::LinksController, type: :controller do
                               user_id: @user.id)
   end
 
-
   describe "PUT /api/v1/links/:id" do
-
     it "updates a link on the link list" do
       put :update, format: :json, id: @link_one.id, link: { read_status: true }
       assert_response :success

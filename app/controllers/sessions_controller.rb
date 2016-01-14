@@ -3,9 +3,9 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(email: params[:login][:email])
-    if @user && @user.authenticate(params[:login][:password])
-      session[:user_id] = @user.id
+    user = User.find_by(email: params[:login][:email])
+    if valid(user)
+      log_in(user)
       redirect_to links_path
     else
       flash.now[:errors] = "Invalid Login"
@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
   end
 
   def delete
-    session[:user_id] = nil
+    log_out if logged_in?
     redirect_to root_path
   end
 end
