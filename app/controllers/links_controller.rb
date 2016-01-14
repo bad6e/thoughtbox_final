@@ -1,8 +1,5 @@
 class LinksController < ApplicationController
-
-  def index
-    @links = current_user.links.all
-  end
+  before_action :load_link, only: [:edit, :update]
 
   def new
     @links = Link.new
@@ -20,12 +17,9 @@ class LinksController < ApplicationController
   end
 
   def edit
-    @link = Link.find(params[:id])
   end
 
-
   def update
-    @link = Link.find(params[:id])
     if @link.update_attributes(link_params)
       flash[:success] = "Link successfully updated!"
       redirect_to links_path
@@ -38,5 +32,9 @@ class LinksController < ApplicationController
   private
     def link_params
       params.require(:link).permit(:title, :link, :read_status)
+    end
+
+    def load_link
+      @link = Link.find(params[:id])
     end
 end
