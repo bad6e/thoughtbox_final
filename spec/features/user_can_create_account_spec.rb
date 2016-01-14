@@ -3,7 +3,7 @@ require "rails_helper"
 feature "guest creates an account", js: true do
   scenario "guest visits the login page" do
     visit root_path
-    click_on "Not registered? Sign up here."
+    click_on "Sign Up"
     expect(current_path).to eq(join_path)
   end
 
@@ -31,7 +31,7 @@ feature "guest creates an account", js: true do
     fill_in "user[password_confirmation]", with: "password"
     click_on "Join Thought Box"
 
-    click_on "Logout"
+    click_on "Sign Out"
 
     visit join_path
     fill_in "user[email]", with: "bret@isnotmodest.com"

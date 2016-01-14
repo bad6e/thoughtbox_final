@@ -11,7 +11,7 @@ feature "guest creates an account" do
     fill_in "user[password_confirmation]", with: "password"
     click_on "Join Thought Box"
 
-    click_on "Logout"
+    click_on "Sign Out"
     expect(current_path).to eq(root_path)
   end
 end
